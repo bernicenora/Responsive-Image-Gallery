@@ -12,12 +12,24 @@ for(i=0;i<images.length;i++){
     images[i].addEventListener("click",zoomImg);
 }
 
-function zoomImg(){
+function zoomImg(e){
     for(i=0;i<images.length;i++){
         //Reset the opacity of all thumbnails
         images[i].style.opacity = 1;
 
         //Change current image to source of clicked image
+        console.log(selected.src);
+        selected.src = e.target.src;
+        console.log(e);
+        console.log(e.target.src);
 
+        //Add a fade-in class
+        selected.classList.add("fade-in");
+
+        // Remove fadeIn class after animation time elapsed
+        setTimeout(function(){selected.classList.remove("fade-in");},600);
+
+        // Change opacity to variable value
+        e.target.style.opacity=opacity;
     }
 }
